@@ -8,6 +8,8 @@ import structural.composite.*;
 import structural.decorator.*;
 import structural.flyweight.*;
 import structural.proxy.*;
+import structural.facade.*;
+
 
 public class Main {
     public static void main(String[] args) {
@@ -61,5 +63,13 @@ public class Main {
         parking.enter(new Car("CE3333CC"));
         parking.enter(new Car("CE4444DD"));
         parking.enter(new Car("CE5555EE"));
+
+        System.out.println("7. FACADE - Рок-концерт");
+        ConcertFacade concert = new ConcertFacade();
+
+        concert.startShow();
+        concert.playHitSong();
+        concert.endShow();
     }
+
 }
