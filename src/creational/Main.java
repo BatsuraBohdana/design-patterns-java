@@ -19,19 +19,22 @@ public class Main {
         new PDFCreator().createDocument().open();
         new WordCreator().createDocument().open();
 
-        // 3. Abstract Factory (Стімпанк проти Кіберпанку)
-        System.out.println("\n[Abstract Factory Output]");
-        TransportFactory steampunkWorld = new SteampunkFactory();
-        System.out.println("--- Генерація стімпанк світу ---");
-        steampunkWorld.createCar().drive();
-        steampunkWorld.createAircraft().fly();
+        // 3. abstractfactory
+        System.out.println("[Abstract Factory Output]");
 
-        TransportFactory cyberpunkWorld = new CyberpunkFactory();
-        System.out.println("--- Генерація кіберпанк світу ---");
-        cyberpunkWorld.createCar().drive();
-        cyberpunkWorld.createAircraft().fly();
+        TransportType type = TransportType.STEAMPUNK;
 
-        // 4. Builder (Створення RPG Героїв)
+        TransportFactory factory = TransportFleet.FactoryMaker.makeFactory(type);
+
+        TransportFleet fleet = new TransportFleet(
+                factory.createCar(),
+                factory.createAircraft()
+        );
+
+        // 4. Builder
+        System.out.println("--- Генерація світу: " + type + " ---");
+        fleet.car().drive();
+        fleet.aircraft().fly();
         System.out.println("\n[Builder Output]");
         Hero paladin = new Hero.HeroBuilder("Артес", "Паладин")
                 .withWeapon("Святий меч")
