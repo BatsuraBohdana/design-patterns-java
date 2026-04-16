@@ -20,7 +20,7 @@ class ShadowDagger implements Artifact {
 }
 
 interface MagicForge {
-    Artifact createArtifact(); // Factory Method
+    Artifact createArtifact(); 
     default void orderArtifact() {
         System.out.println("Кузня починає магічний процес...");
         createArtifact().activate();
@@ -68,7 +68,6 @@ public class Main {
         traveler.startJourney();
 
         System.out.println("\n ПАТЕРН ФАБРИЧНИЙ МЕТОД ");
-        // Виправлено: використано Method Reference для чистоти коду
         MagicForge sunForge = SunMirror::new;
         sunForge.orderArtifact();
         MagicForge shadowForge = ShadowDagger::new;
